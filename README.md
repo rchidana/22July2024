@@ -1,9 +1,9 @@
 # 22 July 2024
 
-Ubuntu Credentials : rps/rps
+Ubuntu Credentials : rps/rps <br>
 
-Jenkins: admin/admin123 URL : http://localhost:8080
-SonarQube: admin/admin123 URL : http://localhost:9000
+Jenkins: admin/admin123 URL : http://localhost:8080 <br>
+SonarQube: admin/admin123 URL : http://localhost:9000 <br>
 
 
 DevSecOps Training PDF Link : https://drive.google.com/drive/folders/14eRyWNfxYmHHqbNv2pzQbnR13lvNfIDR?usp=sharing <br>
