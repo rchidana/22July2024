@@ -1,0 +1,45 @@
+pipeline {
+    agent any
+    stages {
+        stage('GitHub Checkout') {
+            steps {
+                    git changelog: false, poll: false, url: 'https://github.com/rchidana/mvnwebapp.git'
+					echo "Successfully checked out code from GitHub"
+            }
+        }
+        
+        stage('Maven Package') {
+            steps {
+                    bat 'mvn package'
+					echo "I think I built the maven packe successfully"
+            }
+        }
+
+        
+        stage('Deploy') {
+            steps {
+                  deploy adapters: [tomcat8(credentialsId: 'tomcat-cred', path: '', url: 'http://localhost:8081/')], contextPath: 'pipe-deploy', onFailure: false, war: '**/*.war'
+				  echo "Deployment Successfull...tea break"
+            }
+        }
+        
+    }
+    post {
+        always {
+            echo 'This will always run'
+        }
+        success {
+            echo 'This will run only if successful'
+        }
+        failure {
+            echo 'This will run only if failed'
+        }
+        unstable {
+            echo 'This will run only if the run was marked as unstable'
+        }
+        changed {
+            echo 'This will run only if the state of the Pipeline has changed'
+            echo 'For example, if the Pipeline was previously failing but is now successful'
+        }
+    }
+}
